@@ -4,7 +4,7 @@
 
 ## Js
 
-* [Untitled](js/untitled.md)
+* [ES6](js/untitled.md)
 
 ## CSS
 
