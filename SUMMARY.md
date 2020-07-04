@@ -5,6 +5,7 @@
 ## Js
 
 * [ES6](js/untitled.md)
+* [ES6](js/es6.md)
 
 ## CSS
 
