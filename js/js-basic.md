@@ -2,7 +2,7 @@
 
 ## 判断一个对象是否是空对象
 
-    ```js
+    ```javascript
     // 1. 序列化后判断
     var data = {};
     var temp = JSON.stringify(data) == "{}";
@@ -31,7 +31,7 @@
 
 ## 判断js数据类型
 
-    ```js
+    ```javascript
     // 5中基本类型
     let data = ""
     console.log(typeof data) // "string"
