@@ -2,7 +2,7 @@
 
 ## 问题
 
-1.ES6 模块化如何使用，开发环境如何打包？  
+1.ES6 模块化如何使用，开发环境如何打包？
 
 2.Class 和普通构造函数有何区别？
 
@@ -10,15 +10,13 @@
 
 4.ES6 其他常用功能？
 
-
-
 ## ES6 模块化如何使用，开发环境如何打包
 
 ### 模块化基本语法
 
-- export/import
+* export/import
 
-    ```js
+  ```javascript
     /*util1.js*/
     // export default 导出默认（只有一个）引入不需要加大括号
     export default {a : 100}
@@ -38,51 +36,51 @@
     console.log(util1)
     f1()
     f2()
-    ```
+  ```
 
 ### babel转换
 
 1. 安装babel
 
-    ```shall
+   ```text
     npm install --save-dev babel-core babel-preset-es2015 babel-preset-latest
-    ```
+   ```
 
-2. 设置.babelrc隐藏文件(一个babel配置的json文件)
+2. 设置.babelrc隐藏文件\(一个babel配置的json文件\)
 
-    ```json
+   ```javascript
     {
         "presets":["es2015","latest"],//规则
         "plugins": []//插件
     }
-    ```
+   ```
 
 3. 全局安装babel-cli
 
-    ```shall
+   ```text
     sudo npm install -g babel-cli
     babel --version
-    ```
+   ```
 
 4. 编译 es6 文件并输出
 
-    ```shall
+   ```text
     babel ./src/util1.js --out-file ./compiled/util1.js
-    ```
+   ```
 
 ### webpack打包
 
 1. 安装 webpack 和 babel-loader
 
-    ```shall
+   ```text
     npm install webpack babel-loader@7.1.2 --save-dev
-    ```
+   ```
 
-*注意：babel-core的默认下载版本是6.x.x与babel-loader默认版本8.x.x有冲突，所以要指定babel-loader安装版本为7.x.x，否则报错。* 
+_注意：babel-core的默认下载版本是6.x.x与babel-loader默认版本8.x.x有冲突，所以要指定babel-loader安装版本为7.x.x，否则报错。_
 
-2. 配置 webpack.config.js 
+1. 配置 webpack.config.js
 
-    ```javascript
+   ```javascript
     module.exports = {
         entry: './src/index.js',//入口文件
         output: {//出口设置
@@ -97,16 +95,15 @@
             }]
         }
     }
-    ``` 
+   ```
 
-3. 配置 package.json 中 "scripts" 属性 
+2. 配置 package.json 中 "scripts" 属性
 
-    ```json
+   ```javascript
     "build": "webpack --config webpack.config.js",
-    ```
+   ```
 
-4. 运行 npm run build 命令 
-通过 build 命令，在 package.json 中找到运行 webpack 的命令，然后根据webpack.config.js 进行编译
+3. 运行 npm run build 命令 通过 build 命令，在 package.json 中找到运行 webpack 的命令，然后根据webpack.config.js 进行编译
 
 ### Rollup打包
 
@@ -114,13 +111,13 @@ Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工
 
 1. 安装rollup相关工具
 
-    ```shall
+   ```text
     npm i --save-dev rollup rollup-plugin-node-resolve rollup-plugin-babel babel-plugin-external-helpers babel-preset-latest
-    ```
+   ```
 
 2. 配置babel配置文件.babelrc
 
-    ```json
+   ```javascript
     {
         "presets":[
             ["latest",{
@@ -131,11 +128,11 @@ Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工
             ],//规则
         "plugins": ["external-helpers"]//插件
     }
-    ```
+   ```
 
-3. 配置 rollup.config.js 
+3. 配置 rollup.config.js
 
-    ```js
+   ```javascript
     import babel from 'rollup-plugin-babel'
     import resolve from 'rollup-plugin-node-resolve'
 
@@ -150,25 +147,26 @@ Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工
         ],
         dest:'build/bundle.js'
     }
-    ```
+   ```
 
 4. 修改 package.json 打包命令
 
-    ```json
+   ```javascript
     "build": "rollup -c rollup.config.js",
-    ```
+   ```
 
-Rollup与webpack对比  
-- Rollup只能用于打包模块化，需要与Gulp等集成使用；webpack功能更强大，打包后有基于webpack的冗余代码。  
-- Rollup在精简代码上做到了极致；webpack的学习成本较大。
+Rollup与webpack对比
+
+* Rollup只能用于打包模块化，需要与Gulp等集成使用；webpack功能更强大，打包后有基于webpack的冗余代码。  
+* Rollup在精简代码上做到了极致；webpack的学习成本较大。
 
 ### JS的众多模块化标准
 
-- 没有模块化（蛮荒时代）
-- AMD 成为标准，require.js
-- 前端打包工具，webpack等，后端为Commendjs标准
-- ES6统一标准（import/export）
-- nodejs 积极支持，浏览器尚未统一
+* 没有模块化（蛮荒时代）
+* AMD 成为标准，require.js
+* 前端打包工具，webpack等，后端为Commendjs标准
+* ES6统一标准（import/export）
+* nodejs 积极支持，浏览器尚未统一
 
 nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法。
 
@@ -176,7 +174,11 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
 
 ### JS构造函数
 
+<<<<<<< HEAD
     ```javascript
+=======
+```javascript
+>>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     function MathHandle(x, y){
         this.x = x;
         this.y = y;
@@ -188,11 +190,15 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
 
     var m = new MathHandle(1, 2)
     console.log(m.add()) // 3
-    ```
+```
 
 ### Class语法
 
+<<<<<<< HEAD
     ```javascript
+=======
+```javascript
+>>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     class MathHandle {
         constructor(x, y) { // new关键字立马执行的函数
             this.x = x;
@@ -209,8 +215,7 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
     console.log(typeof MathHandle) // "function"
     console.log(MathHandle === MathHandle.prototype.constructor) // "true"
     console.log(m.__proto__ === MathHandle.prototype)//  "true"
-
-    ```
+```
 
 class 是一种语法糖，本质与js普通构造函数没有区别。
 
@@ -218,7 +223,11 @@ class 是一种语法糖，本质与js普通构造函数没有区别。
 
 #### js
 
+<<<<<<< HEAD
     ```javascript
+=======
+```javascript
+>>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     // 这种方法无法向父亲传递参数，且所有实例公用一个父亲属性及方法
     function Animal() {
         this.eat = function() {
@@ -238,11 +247,15 @@ class 是一种语法糖，本质与js普通构造函数没有区别。
     var hashiqi = new Dog()
     hashiqi.bark()
     hashiqi.eat()
-    ```
+```
 
 #### class
 
+<<<<<<< HEAD
     ```javascript
+=======
+```javascript
+>>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     class Animal{
         constructor(name){
             this.name = name
@@ -265,8 +278,5 @@ class 是一种语法糖，本质与js普通构造函数没有区别。
     const hashiqi = new Dog('哈士奇')
     hashiqi.eat() 
     hashiqi.bark()
-    ```
-
-
-
+```
 
