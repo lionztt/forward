@@ -174,11 +174,7 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
 
 ### JS构造函数
 
-<<<<<<< HEAD
     ```javascript
-=======
-```javascript
->>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     function MathHandle(x, y){
         this.x = x;
         this.y = y;
@@ -194,11 +190,7 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
 
 ### Class语法
 
-<<<<<<< HEAD
     ```javascript
-=======
-```javascript
->>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     class MathHandle {
         constructor(x, y) { // new关键字立马执行的函数
             this.x = x;
@@ -223,11 +215,7 @@ class 是一种语法糖，本质与js普通构造函数没有区别。
 
 #### js
 
-<<<<<<< HEAD
     ```javascript
-=======
-```javascript
->>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     // 这种方法无法向父亲传递参数，且所有实例公用一个父亲属性及方法
     function Animal() {
         this.eat = function() {
@@ -251,11 +239,7 @@ class 是一种语法糖，本质与js普通构造函数没有区别。
 
 #### class
 
-<<<<<<< HEAD
     ```javascript
-=======
-```javascript
->>>>>>> 6432edffaf0bbc596dd3a3206760071ae4713b77
     class Animal{
         constructor(name){
             this.name = name
