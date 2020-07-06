@@ -2,7 +2,7 @@
 
 ## 判断一个对象是否是空对象
 
-    ```javascript
+```javascript
     // 1. 序列化后判断
     var data = {};
     var temp = JSON.stringify(data) == "{}";
@@ -27,50 +27,53 @@
     var data = {};
     var arr = Object.keys(data);
     console.log(arr.length==0) ; //length为0
-    ```
+```
 
 ## 判断js数据类型
-    typeof方法可以用于判断基本类型（string、number、boolean、undefined、symbol）和函数，不适用于Object类型的进一步判断
 
-    ```javascript
-    // 5中基本类型
-    let data = ""
-    console.log(typeof data) // "string"
+```text
+typeof方法可以用于判断基本类型（string、number、boolean、undefined、symbol）和函数，不适用于Object类型的进一步判断
 
-    data = 0
-    console.log(typeof data) // "number"
+```javascript
+// 5中基本类型
+let data = ""
+console.log(typeof data) // "string"
 
-    data = NaN
-    console.log(typeof data) // "number"
+data = 0
+console.log(typeof data) // "number"
 
-    data = false
-    console.log(typeof data) // "boolean"
+data = NaN
+console.log(typeof data) // "number"
 
-    data = undefined
-    console.log(typeof data) // "undefined"
+data = false
+console.log(typeof data) // "boolean"
 
-    data = null
-    console.log(typeof data) // "object"
+data = undefined
+console.log(typeof data) // "undefined"
 
-    // ES6新增类型
-    data = Symbol('data')
-    console.log(typeof data) // "symbol"
+data = null
+console.log(typeof data) // "object"
 
-    //  其他类型
-    data = {}
-    console.log(typeof data) // "object"
+// ES6新增类型
+data = Symbol('data')
+console.log(typeof data) // "symbol"
 
-    data = function(){}
-    console.log(typeof data) // "function"
+//  其他类型
+data = {}
+console.log(typeof data) // "object"
 
-    data = []
-    console.log(typeof data) // "object"
+data = function(){}
+console.log(typeof data) // "function"
 
-    ```
+data = []
+console.log(typeof data) // "object"
+
+```
+```
 
 ### 判断是否是数组
 
-    ```javascript
+```javascript
     let data = []
     console.log(data instanceof Array) // "true"
     console.log(data.__proto__===Array.prototype) // "true"
@@ -78,9 +81,7 @@
     console.log(data.constructor===Array) // "true"
     console.log(Object.prototype.toString.call(data)==="[object Array]") // "true"
     console.log(Array.isArray(data)) // "true"
-    ```
-
+```
 
 ### 数组方法有哪些
-
 
