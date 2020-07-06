@@ -30,6 +30,7 @@
     ```
 
 ## 判断js数据类型
+    typeof方法可以用于判断基本类型（string、number、boolean、undefined、symbol）和函数，不适用于Object类型的进一步判断
 
     ```javascript
     // 5中基本类型
@@ -66,3 +67,20 @@
     console.log(typeof data) // "object"
 
     ```
+
+### 判断是否是数组
+
+    ```javascript
+    let data = []
+    console.log(data instanceof Array) // "true"
+    console.log(data.__proto__===Array.prototype) // "true"
+    console.log(Object.getPrototypeOf(data)===Array.prototype) // "true"
+    console.log(data.constructor===Array) // "true"
+    console.log(Object.prototype.toString.call(data)==="[object Array]") // "true"
+    console.log(Array.isArray(data)) // "true"
+    ```
+
+
+### 数组方法有哪些
+
+

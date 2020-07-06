@@ -30,3 +30,14 @@ console.log(typeof data) // "function"
 
 data = []
 console.log(typeof data) // "object"
+
+// 数组判断
+let data = []
+console.log(data instanceof Array) // "true"
+console.log(data.__proto__===Array.prototype) // "true"
+console.log(Object.getPrototypeOf(data)===Array.prototype) // "true"
+console.log(data.constructor===Array) // "true"
+console.log(Object.prototype.toString.call(data)==="[object Array]") // "true"
+console.log(Array.isArray(data)) // "true"
+
+
