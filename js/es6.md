@@ -15,6 +15,7 @@
 ## ES6 模块化如何使用，开发环境如何打包
 
 ### 模块化基本语法
+
 - export/import
 
     ```js
@@ -40,6 +41,7 @@
     ```
 
 ### babel转换
+
 1. 安装babel
 
     ```shall
@@ -69,13 +71,15 @@
     ```
 
 ### webpack打包
+
 1. 安装 webpack 和 babel-loader
 
     ```shall
     npm install webpack babel-loader@7.1.2 --save-dev
     ```
 
-*注意：babel-core的默认下载版本是6.x.x与babel-loader默认版本8.x.x有冲突，所以要指定babel-loader安装版本为7.x.x，否则报错。*  
+*注意：babel-core的默认下载版本是6.x.x与babel-loader默认版本8.x.x有冲突，所以要指定babel-loader安装版本为7.x.x，否则报错。* 
+
 2. 配置 webpack.config.js 
 
     ```javascript
@@ -104,7 +108,8 @@
 4. 运行 npm run build 命令 
 通过 build 命令，在 package.json 中找到运行 webpack 的命令，然后根据webpack.config.js 进行编译
 
-**Rollup**
+### Rollup打包
+
 Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工具，Rollup总能打出更小，更快的包。Rollup通过对代码的静态分析，分析出冗余代码，在最终的打包文件中将这些冗余代码删除掉，进一步缩小代码体积。
 
 1. 安装rollup相关工具
@@ -136,7 +141,7 @@ Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工
 
     export default {
         entry: 'src/index.js',
-        format: 'umd',//格式umd兼容AMD/CMD等
+        format: 'umd',//格式umd兼容AMD/CMD等打包标准
         plugins:[
             resolve(),
             babel({
@@ -153,11 +158,12 @@ Rollup是下一代JavaScript模块打包工具。相比其他JavaScript打包工
     "build": "rollup -c rollup.config.js",
     ```
 
-Rollup与webpack对比
+Rollup与webpack对比  
 - Rollup只能用于打包模块化，需要与Gulp等集成使用；webpack功能更强大，打包后有基于webpack的冗余代码。  
 - Rollup在精简代码上做到了极致；webpack的学习成本较大。
 
-**JS的众多模块化标准**
+### JS的众多模块化标准
+
 - 没有模块化（蛮荒时代）
 - AMD 成为标准，require.js
 - 前端打包工具，webpack等，后端为Commendjs标准
@@ -169,15 +175,97 @@ nodejs 8以前版本不支持import/export语法，支持Commendjs模块方法�
 ## Class与普通构造函数区别
 
 ### JS构造函数
-1. 语法
-```js
-function
-```
+
+    ```js
+    function MathHandle(x, y){
+        this.x = x;
+        this.y = y;
+    }
+
+    MathHandle.prototype.add = function(){
+        return this.x + this.y
+    }
+
+    var m = new MathHandle(1, 2)
+    console.log(m.add()) // 3
+    ```
 
 ### Class语法
+
+    ```js
+    class MathHandle {
+        constructor(x, y) { // new关键字立马执行的函数
+            this.x = x;
+            this.y = y;
+        }
+        add() { // 扩展方法
+            return this.x + this.y;
+        }
+    }
+
+    const m = new MathHandle(1, 2);
+    console.log(m.add()) // 3
+
+    console.log(typeof MathHandle) // "function"
+    console.log(MathHandle === MathHandle.prototype.constructor) // "true"
+    console.log(m.__proto__ === MathHandle.prototype)//  "true"
+
+    ```
+
+class 是一种语法糖，本质与js普通构造函数没有区别。
+
 ### 继承
 
+#### js
 
+    ```js
+    // 这种方法无法向父亲传递参数，且所有实例公用一个父亲属性及方法
+    function Animal() {
+        this.eat = function() {
+            console.log('animal eat')
+        }
+    }
+
+    function Dog() {
+        this.bark = function() {
+            console.log('dog bark')
+        }
+    }
+
+    // 继承
+    Dog.prototype = new Animal()
+
+    var hashiqi = new Dog()
+    hashiqi.bark()
+    hashiqi.eat()
+    ```
+
+#### class
+
+    ```js
+    class Animal{
+        constructor(name){
+            this.name = name
+        }
+        eat(){
+            console.log(`${this.name} eat`)
+        }
+    }
+
+    class Dog extends Animal {
+        constructor(name) {
+            super(name)
+            this.name = name
+        }
+        bark() {
+            console.log(`${this.name} bark`)
+        }
+    }
+
+    const hashiqi = new Dog('哈士奇')
+    hashiqi.eat() 
+    hashiqi.bark()
+    ```
 
 
 
